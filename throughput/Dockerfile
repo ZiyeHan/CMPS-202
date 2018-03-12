@@ -22,8 +22,11 @@ RUN add-apt-repository ppa:webupd8team/java
 RUN apt update; sudo apt install oracle-java8-installer
 RUN apt install oracle-java8-set-default
 
-# download my input set
+# download my jar
+RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/throughput/MultithreadJackson.jar
 
+# download my input set
+RUN 
 
 # run 1thread, 2T，then collect result 
 
