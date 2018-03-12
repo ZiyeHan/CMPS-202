@@ -36,7 +36,7 @@ RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/latency/VanillaMusic.apk
 RUN adb install VanillaMusic.apk
 
 # start systrace monitor for 200*500/1000=100 seconds, monitor latency like frames
-RUN cd /usr/local/sbin/platform-tools/systrace/catapult/systrace
+RUN cd /usr/local/sbin/platform-tools/systrace/
 RUN python systrace.py --time=100 -o latencyResult.html
 
 # start monkey runner for hand-free aumotation testing
