@@ -39,48 +39,71 @@ RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/throughput/MultithreadJa
 # download my input set
 RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/input.txt
 
+# downlaod my shells scripts
+RUN wget 
+WORKDIR pmu-tools
+
+
+
 # run 1thread, 1T，then collect result 
+RUN perf stat -d java -jar MultithreadJackson.jar 1 1 800 input.txt
 
 # run 2thread, 1T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 2 1 800 input.txt
 
 # run 4thread, 1T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 4 1 800 input.txt
 
 # run 8thread, 1T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 8 1 800 input.txt
 
 # run 1thread, 1/4T，then collect result 
+RUN perf stat -d java -jar MultithreadJackson.jar 1 1 200 input.txt
 
 # run 2thread, 1/4T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 2 1 200 input.txt
 
 # run 4thread, 1/4T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 4 1 200 input.txt
 
 # run 8thread, 1/4T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 8 1 200 input.txt
 
 # run 1thread, 1/16T，then collect result 
+RUN perf stat -d java -jar MultithreadJackson.jar 1 1 50 input.txt
 
 # run 2thread, 1/16T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 2 1 50 input.txt
 
 # run 4thread, 1/16T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 4 1 50 input.txt
 
 # run 8thread, 1/16T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 8 1 50 input.txt
 
 # run 1thread, 1/64T，then collect result 
+RUN perf stat -d java -jar MultithreadJackson.jar 1 1 12 input.txt
 
 # run 2thread, 1/64T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 2 1 12 input.txt
 
 # run 4thread, 1/64T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 4 1 12 input.txt
 
 # run 8thread, 1/64T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 8 1 12 input.txt
 
 # run 1thread, 1/256T，then collect result 
+RUN perf stat -d java -jar MultithreadJackson.jar 1 1 3 input.txt
 
 # run 2thread, 1/256T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 2 1 3 input.txt
 
 # run 4thread, 1/256T，then collect result
+RUN perf stat -d java -jar MultithreadJackson.jar 4 1 3 input.txt
 
 # run 8thread, 1/256T，then collect result
-
-
-
+RUN perf stat -d java -jar MultithreadJackson.jar 8 1 3 input.txt
 
 
 
