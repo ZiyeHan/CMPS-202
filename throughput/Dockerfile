@@ -39,11 +39,16 @@ RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/throughput/MultithreadJa
 # download my input set
 RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/input.txt
 
-# downlaod my shells scripts
-RUN wget 
+# change work directory
 WORKDIR pmu-tools
 
+# downlaod my shells scripts for generating CSV
+RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/generateCSV.sh
+RUN ./generateCSV.sh
 
+# downlaod my shells scripts for generating PNG image from CSVs
+RUN wget   
+RUN ./generatePNG.sh
 
 # run 1thread, 1T，then collect result 
 RUN perf stat -d java -jar MultithreadJackson.jar 1 1 800 input.txt
