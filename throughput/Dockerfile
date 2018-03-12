@@ -26,7 +26,7 @@ RUN apt install oracle-java8-set-default
 RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/throughput/MultithreadJackson.jar
 
 # download my input set
-RUN 
+RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/input.txt
 
 # run 1thread, 2T，then collect result 
 
@@ -36,11 +36,6 @@ RUN
 
 # run 8thread, 2T，then collect result
 
-# run 8thread, 2T，then collect result
-
-# run 8thread, 2T，then collect result
-
-# run 8thread, 2T，then collect result
 
 
 
