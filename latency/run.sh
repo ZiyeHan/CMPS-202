@@ -6,6 +6,4 @@ docker stop vanilla-container
 docker rm vanilla-container
 docker run -dit --privileged --name vanilla-container vanillaMusicLatencyServer
 
-$cmd "cd latency/ && ./latency"
-$cmd "cd latency/ && Rscript dnorm.R"
-
+# results are html files

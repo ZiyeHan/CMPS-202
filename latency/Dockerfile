@@ -26,7 +26,7 @@ RUN apt-get install -y android-sdk
 # add yourself to the plug dev mode, then you can use adb
 RUN usermod -aG plugdev $(id -u -n)
 
-# download vanilla apk (I have upload apk to my github)
+# download vanilla apk (I have uploaded the apk to my github)
 RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/latency/VanillaMusic.apk
 
 # important !!!
@@ -35,14 +35,19 @@ RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/latency/VanillaMusic.apk
 # install the apk to your device
 RUN adb install VanillaMusic.apk
 
-# start systrace monitor for 30 seconds, monitor latency like frames
-
+# start systrace monitor for 200*500/1000=100 seconds, monitor latency like frames
+RUN cd /usr/local/sbin/platform-tools/systrace/catapult/systrace
+RUN python systrace.py --time=100 -o latencyResult.html
 
 # start monkey runner for hand-free aumotation testing
+# send 200 random actions to the app, interval is 500ms between events
+RUN adb shell monkey -p ch.blinkenlights.android.vanilla -v --throttle 200 500
 
+# Cool! Monkeyrunner start working!
 
 # collect systrace visualization latency report in HTML web page
 
+# The reort is in your current directory, and the filre name is "latencyResult.html"
 
 
 
