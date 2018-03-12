@@ -1,5 +1,7 @@
 FROM ubuntu:17.10
 
+MAINTAINER Ziye Han
+
 # update apt-get
 RUN apt-get update -y
 RUN apt-get upgrade -y
