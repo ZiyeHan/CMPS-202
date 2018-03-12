@@ -26,9 +26,14 @@ RUN apt-get install -y android-sdk
 # add yourself to the plug dev mode, then you can use adb
 RUN usermod -aG plugdev $(id -u -n)
 
-# download vanilla apk (I have upload apk to my google drive)
+# download vanilla apk (I have upload apk to my github)
+RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/latency/VanillaMusic.apk
 
+# important !!!
+# then you need to manualy connect your divice to the machine, there is no way to do it in cmd. Manualy do it please...
 
+# install the apk to your device
+RUN adb install VanillaMusic.apk
 
 # start systrace monitor for 30 seconds, monitor latency like frames
 
