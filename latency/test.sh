@@ -1,6 +1,6 @@
 echo "important !!!"
-echo "Now you need to manualy connect your android divice to the machine. You have 15 seconds."
-sleep 15s
+echo "Now you need to manualy connect your android divice to the machine. You have 25 seconds."
+sleep 25s
 
 # install the apk to your device
 adb install VanillaMusic.apk
