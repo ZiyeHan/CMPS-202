@@ -36,28 +36,7 @@ RUN usermod -aG plugdev $(id -u -n)
 # download vanilla apk (I have uploaded the apk to my github)
 RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/latency/VanillaMusic.apk
 
-# important !!!
-# then you need to manualy connect your divice to the machine, there is no way to do it in cmd. Manualy do it please...
-# here add some instructions
-RUN echo "Now you need to manualy connect your divice to the machine, there is no way to do it in cmd. "
 
-# install the apk to your device
-RUN adb install VanillaMusic.apk
-
----------------------------------------------------------------------------------------------------------
-# start systrace monitor for 200*500/1000=100 seconds, monitor latency like frames
-RUN cd ./android-sdk-linux/platform-tools/systrace
-RUN python systrace.py --time=100 -o latencyResult.html
-
-# start monkey runner for hand-free aumotation testing
-# send 200 random actions to the app, interval is 500ms between events
-RUN adb shell monkey -p ch.blinkenlights.android.vanilla -v --throttle 200 500
-
-# Cool! Monkeyrunner start working!
-
-# collect systrace visualization latency report in HTML web page
-
-# The reort is in your current directory, and the filre name is "latencyResult.html"
 
 
 
