@@ -1,9 +1,12 @@
 #!/bin/bash
 
-cmd="docker exec vanilla-container /bin/sh -c"
+docker run -dit --privileged --name cmpe202-vanilla-music-latency-container chrishan82/cmpe202-vanilla-music-latency
 
-docker stop vanilla-container
-docker rm vanilla-container
-docker run -dit --privileged --name vanilla-container vanillaMusicLatencyServer
+docker exec cmpe202-vanilla-music-latency-container /bin/sh -c "wget "
 
-# results are html files
+
+
+
+
+
+

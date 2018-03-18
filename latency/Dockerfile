@@ -1,6 +1,6 @@
-FROM ubuntu:17.10
+FROM ubuntu
 
-MAINTAINER Ziye Han
+MAINTAINER Ziye Han (zhan12@ucsc.edu)
 
 # update apt-get
 RUN apt-get update -y
@@ -8,22 +8,27 @@ RUN apt-get upgrade -y
 RUN apt-get install -y build-essential
 
 # install basic linux tools
-RUN apt-get install -y git
-RUN apt-get install -y unzip
 RUN apt-get install -y wget
+RUN apt-get install -y unzip
+RUN apt-get install -y software-properties-common python-software-properties
 
 # install python2.7 (later used to run systrace.py)
-RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt-get update
+RUN add-apt-repository ppa:deadsnakes/ppa -y
 RUN apt-get install -y python2.7
 
 # install adb tools for android monkey test
-RUN add-apt-repository ppa:nilarimogard/webupd8
+RUN add-apt-repository ppa:nilarimogard/webupd8 -y
 RUN apt-get install -y android-tools-adb android-tools-fastboot
 
 # install sdk for android monkey test
-RUN add-apt-repository ppa:upubuntu-com/sdk
+RUN add-apt-repository ppa:upubuntu-com/sdk -y
 RUN apt-get install -y android-sdk
+
+# install other adb tools
+RUN wget http://dl.google.com/android/android-sdk_r24.2-linux.tgz
+RUN tar -xvf android-sdk_r24.2-linux.tgz
+RUN cd android-sdk-linux/tools
+RUN ./android update sdk --no-ui 
 
 # add yourself to the plug dev mode, then you can use adb
 RUN usermod -aG plugdev $(id -u -n)
@@ -33,12 +38,15 @@ RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/latency/VanillaMusic.apk
 
 # important !!!
 # then you need to manualy connect your divice to the machine, there is no way to do it in cmd. Manualy do it please...
+# here add some instructions
+RUN echo "Now you need to manualy connect your divice to the machine, there is no way to do it in cmd. "
 
 # install the apk to your device
 RUN adb install VanillaMusic.apk
 
+---------------------------------------------------------------------------------------------------------
 # start systrace monitor for 200*500/1000=100 seconds, monitor latency like frames
-RUN cd /usr/local/sbin/platform-tools/systrace/
+RUN cd ./android-sdk-linux/platform-tools/systrace
 RUN python systrace.py --time=100 -o latencyResult.html
 
 # start monkey runner for hand-free aumotation testing
