@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cmd="docker exec vanilla-container /bin/sh -c"
+cmd="docker exec jackson-container /bin/sh -c"
 
-docker stop vanilla-container
-docker rm vanilla-container
-docker run -dit --privileged --name vanilla-container vanillaMusicLatencyServer
+docker stop jackson-container
+docker rm jackson-container
+docker run -dit --privileged --name jackson-container JacksonThroughputServer
 
-# results are html files
+# results are png files

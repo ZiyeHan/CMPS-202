@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build . -t vanillaMusicLatencyServer
+docker build . -t JacksonThroughputServer
 
