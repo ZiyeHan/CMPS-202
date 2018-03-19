@@ -48,7 +48,6 @@ python generateCSV.py
 python generatePLOT.py 
 
 
-echo "All images are in the ImageFiles/ directory."
 
 
 
