@@ -2,7 +2,6 @@
 
 mkdir PlotFiles
 mkdir ImageFiles
-mkdir PerfFiles
 
 # close nmi_watchdog
 echo 0 | dd of="/proc/sys/kernel/nmi_watchdog"
@@ -41,7 +40,7 @@ for i in 1 2 4 8 # number of threads
 	do
 		for j in 800 200 50 12 3 # number fo size
 			do
-				perf stat -d -o PerfFiles/result$i$j MultithreadJackson.jar $i 1 $j input.txt
+				perf stat -d -o result$i$j MultithreadJackson.jar $i 1 $j input.txt
 			done
 	done
 
