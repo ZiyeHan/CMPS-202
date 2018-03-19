@@ -35,6 +35,9 @@ for i in 1 2 4 8 # number of threads
         	done
 	done
 
+echo "All images are in the ImageFiles/ directory."
+
+
 
 
 
