@@ -2,6 +2,7 @@
 
 mkdir PlotFiles
 mkdir ImageFiles
+mkdir PerfFiles
 
 # close nmi_watchdog
 echo 0 | dd of="/proc/sys/kernel/nmi_watchdog"
@@ -34,6 +35,19 @@ for i in 1 2 4 8 # number of threads
         		python pmu-tools/tl-barplot.py --cpu C0-T0 PlotFiles/CSV$i$j.csv -o ImageFiles/image$i$j.png
         	done
 	done
+
+# generate CPI text
+for i in 1 2 4 8 # number of threads
+	do
+		for j in 800 200 50 12 3 # number fo size
+			do
+				perf stat -d -o PerfFiles/result$i$j MultithreadJackson.jar $i 1 $j input.txt
+			done
+	done
+
+python generateCSV.py 
+python generatePLOT.py 
+
 
 echo "All images are in the ImageFiles/ directory."
 
