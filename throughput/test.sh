@@ -9,7 +9,7 @@ echo 0 | dd of="/proc/sys/kernel/nmi_watchdog"
 pip install matplotlib==1.5.3
 pip install brewer2mpl
 
-apt-get install vim
+apt-get install -y vim
 apt-get install -y python-tk
 
 echo "Now you need to manualy vim change /usr/local/lib/python2.7/dist-packages/matplotlib/mpl-data/matplotlibrc."
