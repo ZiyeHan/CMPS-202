@@ -5,7 +5,7 @@ import sys
 newFileName = 'res'
 
 for i in [1,2,4,8]:
-   for j in [80,200,50,12,3]:
+   for j in [800,200,50,12,3]:
 	filename = 'result' + str(i) + str(j) 
 	pattern  = '\s*(.*?)\s*(instructions|cycles|branches|branch-misses|L1-dcache-loads|L1-dcache-load-misses|LLC-loads|LLC-load-misses)'                   
 	new_file = []
@@ -34,7 +34,7 @@ for i in [1,2,4,8]:
 	     	f.write(paraNoComma[7] + "\n")
 
 txt_file = r"res"
-csv_file = r"mycsv.csv"
+csv_file = r"main.csv"
 in_txt = csv.reader(open(txt_file, "rb"), delimiter = ' ')
 out_csv = csv.writer(open(csv_file, 'wb'))
 out_csv.writerows(in_txt)
