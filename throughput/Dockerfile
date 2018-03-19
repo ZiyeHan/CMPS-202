@@ -1,6 +1,6 @@
-FROM ubuntu:17.10
+FROM ubuntu
 
-MAINTAINER Ziye Han
+MAINTAINER Ziye Han (zhan12@ucsc.edu)
 
 # update apt-get
 RUN apt-get update -y
@@ -11,27 +11,29 @@ RUN apt-get install -y build-essential
 RUN apt-get install -y git
 RUN apt-get install -y unzip
 RUN apt-get install -y wget
+RUN apt-get install -y software-properties-common python-software-properties
 
 # install perf
 RUN apt-get install -y linux-tools-common
 RUN apt-get install -y linux-tools-4.13.0-36-generic
 RUN apt-get install -y linux-cloud-tools-4.13.0-36-generic
+RUN apt-get install -y linux-tools-4.4.0-1050-aws
+RUN apt-get install -y linux-cloud-tools-4.4.0-1050-aws
 
-# install python2.7 (later used to run systrace.py)
-RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt-get update
-RUN apt-get install -y python2.7
-RUN pip install matplotlib
+# install python 3 (later used to run systrace.py)
+RUN apt-get install -y python3.6
+RUN apt-get install -y python3-pip
+
+# install some python libs
+RUN pip3 install matplotlib
 
 # install java jdk
-RUN add-apt-repository ppa:webupd8team/java
-RUN apt update; apt install -y oracle-java8-installer
+RUN add-apt-repository ppa:webupd8team/java -y
+RUN apt install -y oracle-java8-installer
 RUN apt install -y oracle-java8-set-default
 
 # install pmu-tools
 RUN git clone https://github.com/andikleen/pmu-tools
-WORKDIR pmu-tools
-RUN export PATH=$PATH:`pwd`
 
 # download my jar
 RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/throughput/MultithreadJackson.jar
@@ -39,16 +41,7 @@ RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/throughput/MultithreadJa
 # download my input set
 RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/input.txt
 
-# change work directory
-WORKDIR pmu-tools
-
-# downlaod my shells scripts for generating CSV
-RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/generateCSV.sh
-RUN ./generateCSV.sh
-
-# download my shells scripts for generating PNG image from CSVs
-RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/generatePNG.sh  
-RUN ./generatePNG.sh
-
+# downlaod my shells scripts 
+RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/test.sh
 
 
