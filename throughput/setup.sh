@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build . -t JacksonThroughputServer
+docker build . -t chrishan82/cmpe202-jackson-throughput
 

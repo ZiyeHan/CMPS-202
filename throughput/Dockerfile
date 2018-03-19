@@ -41,7 +41,4 @@ RUN wget https://github.com/ZiyeHan/CMPS-202/raw/master/throughput/MultithreadJa
 # download my input set
 RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/input.txt
 
-# downlaod my shells scripts 
-RUN wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/test.sh
-
 

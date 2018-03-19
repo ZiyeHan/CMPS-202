@@ -1,9 +1,6 @@
 #!/bin/bash
 
-cmd="docker exec jackson-container /bin/sh -c"
+docker run -dit --privileged --name cmpe202-jackson-throughput-container chrishan82/cmpe202-jackson-throughput
 
-docker stop jackson-container
-docker rm jackson-container
-docker run -dit --privileged --name jackson-container JacksonThroughputServer
-
-# results are png files
+docker exec cmpe202-vanilla-music-latency-container /bin/sh -c "wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/test.sh"
+docker exec cmpe202-vanilla-music-latency-container /bin/sh -c "bash test.sh"
