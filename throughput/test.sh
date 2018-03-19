@@ -6,9 +6,15 @@ mkdir ImageFiles
 # close nmi_watchdog
 echo 0 | dd of="/proc/sys/kernel/nmi_watchdog"
 
-wget https://pypi.python.org/packages/33/da/6409d32c46778ed20308e83bc501ff2ff8a9cbda5dd7b26362c5e99a6149/matplotlib-2.2.2-cp27-cp27mu-manylinux1_x86_64.whl#md5=2d6201316e11f9b425bda8fe366d4e23
-pip install matplotlib-2.2.2-cp27-cp27mu-manylinux1_x86_64.whl
+pip install matplotlib==1.5.3
+pip install brewer2mpl
 
+apt-get install vim
+apt-get install -y python-tk
+
+echo "Now you need to manualy vim change /usr/local/lib/python2.7/dist-packages/matplotlib/mpl-data/matplotlibrc."
+echo "Edit backend : Agg. You have 30 seconds."
+sleep 30s
 
 # generate csv
 for i in 1 2 4 8 # number of threads
