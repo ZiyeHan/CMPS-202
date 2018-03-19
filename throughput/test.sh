@@ -44,12 +44,12 @@ for i in 1 2 4 8 # number of threads
 			done
 	done
 
+
+wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/generateCSV.py
+wget https://raw.githubusercontent.com/ZiyeHan/CMPS-202/master/throughput/generatePLOT.py
+
 python generateCSV.py 
 python generatePLOT.py 
-
-
-
-
 
 
 

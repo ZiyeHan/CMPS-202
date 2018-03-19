@@ -3,7 +3,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import csv
 
-x = [3,12,50,200,80]
+x = [3,12,50,200,800]
 y11 = []
 y12 = []
 y13 = []
